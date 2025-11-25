@@ -1,2 +1,2 @@
-# chia-doi-the-thao
-Streamlit app: chia 4 đội ngẫu nhiên (có seeds và team leaders)
+# Chia đội thể thao (Streamlit)
+Upload file Excel (danh sách người chơi) và (tùy chọn) file seeds. Bấm 'Bắt đầu chia đội' để nhận 4 đội.
