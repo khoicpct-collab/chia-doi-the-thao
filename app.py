@@ -1,34 +1,55 @@
-bg_url = "https://st.depositphotos.com/1020288/3162/i/950/depositphotos_31620697-stock-photo-sexy-backs-of-five-beautiful.jpg"
+import streamlit as st
+import pandas as pd
+import random
+import base64
+from io import BytesIO
 
-st.markdown(
-    f"""
-    <style>
-    .stApp {{
-        background: url('{bg_url}');
-        background-size: cover;
-        background-position: center;
-    }}
+# ======================
+# PAGE CONFIG
+# ======================
+st.set_page_config(page_title="Chia Đội Thể Thao", layout="wide")
 
-    /* Overlay làm mờ */
-    .stApp::before {{
-        content: "";
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(255, 255, 255, 0.55); /* chỉnh độ mờ tại đây */
-        backdrop-filter: blur(5px); /* hiệu ứng mờ */
-        z-index: -1;
-    }}
+# ======================
+# BACKGROUND IMAGE SETUP
+# ======================
 
-    /* Khối nội dung */
-    .main-block {{
-        background: rgba(255, 255, 255, 0.85);
-        padding: 25px;
-        border-radius: 15px;
-    }}
-    </style>
-    """,
-    unsafe_allow_html=True
-)
+DEFAULT_BG_PATH = "/mnt/data/A_high-resolution_photograph_captures_four_fit_wom.png"
+
+def load_image_base64(path):
+    with open(path, "rb") as f:
+        return base64.b64encode(f.read()).decode()
+
+st.sidebar.header("🎨 Tuỳ chỉnh giao diện")
+uploaded_bg = st.sidebar.file_uploader("Tải hình nền (tùy chọn)", type=["jpg", "jpeg", "png"])
+
+if uploaded_bg:
+    bg_data = uploaded_bg.read()
+    bg_base64 = base64.b64encode(bg_data).decode()
+else:
+    bg_base64 = load_image_base64(DEFAULT_BG_PATH)
+
+# --- CSS (Blur + dark overlay mạnh) ---
+page_bg_css = f"""
+<style>
+[data-testid="stAppViewContainer"] {{
+    background-image: url("data:image/png;base64,{bg_base64}");
+    background-size: cover;
+    background-position: center;
+}}
+
+[data-testid="stAppViewContainer"]::before {{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    backdrop-filter: blur(16px);
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 0;
+}}
+
+.block-container {{
+    position: relative;
+    z-index: 5;
+}}
