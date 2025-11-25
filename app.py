@@ -10,7 +10,7 @@ from io import BytesIO
 st.set_page_config(page_title="Chia Đội Thể Thao", layout="wide")
 
 # ======================
-# BACKGROUND IMAGE SETUP
+# BACKGROUND IMAGE SETUP (GIỮ NGUYÊN - KHÔNG CHO UPLOAD)
 # ======================
 
 DEFAULT_BG_PATH = "/mnt/data/A_high-resolution_photograph_captures_four_fit_wom.png"
@@ -19,16 +19,9 @@ def load_image_base64(path):
     with open(path, "rb") as f:
         return base64.b64encode(f.read()).decode()
 
-st.sidebar.header("🎨 Tuỳ chỉnh giao diện")
-uploaded_bg = st.sidebar.file_uploader("Tải hình nền (tùy chọn)", type=["jpg", "jpeg", "png"])
+bg_base64 = load_image_base64(DEFAULT_BG_PATH)
 
-if uploaded_bg:
-    bg_data = uploaded_bg.read()
-    bg_base64 = base64.b64encode(bg_data).decode()
-else:
-    bg_base64 = load_image_base64(DEFAULT_BG_PATH)
-
-# --- CSS (Blur + dark overlay mạnh) ---
+# --- CSS (Blur mạnh + chữ sáng + overlay)
 page_bg_css = f'''
 <style>
 [data-testid="stAppViewContainer"] {{
@@ -44,18 +37,25 @@ page_bg_css = f'''
     left: 0;
     right: 0;
     bottom: 0;
-    backdrop-filter: blur(16px);
-    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(20px);
+    background: rgba(0, 0, 0, 0.60); 
     z-index: 0;
 }}
 
 .block-container {{
     position: relative;
-    z-index: 5;
+    z-index: 10;
+    color: #ffffff !important; 
+    text-shadow: 0px 0px 8px rgba(0,0,0,0.9);
 }}
 
-.stButton > button {{
-    background: linear-gradient(90deg, #ffdd55, #ff8844);
+h1, h2, h3, h4, h5, h6, p, label, span {{
+    color: #ffffff !important;
+    text-shadow: 0px 0px 8px rgba(0,0,0,0.8);
+}}
+
+.stButton>button {{
+    background: linear-gradient(90deg, #ffee66, #ff9933);
     border: none;
     color: black;
     font-weight: 700;
@@ -64,8 +64,8 @@ page_bg_css = f'''
     cursor: pointer;
 }}
 
-.stButton > button:hover {{
-    opacity: 0.85;
+.stButton>button:hover {{
+    opacity: 0.9;
 }}
 </style>
 '''
@@ -76,7 +76,7 @@ st.markdown(page_bg_css, unsafe_allow_html=True)
 # MAIN TITLE
 # ======================
 st.title("🎯 Công Cụ Chia Đội Thể Thao Ngẫu Nhiên")
-st.write("Upload danh sách và hệ thống sẽ chia tự động thành 4 đội cân bằng.")
+st.write("Hệ thống sẽ chia tự động thành 4 đội cân bằng.")
 
 # ======================
 # UPLOAD FILE SECTION
