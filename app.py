@@ -28,7 +28,7 @@ page_bg = f"""
 """
 st.markdown(page_bg, unsafe_allow_html=True)
 
-st.title("🏖️ Bãi Biển Bóng Chuyền – Công Cụ Chia 4 Đội Thể Thao Ngẫu Nhiên 🏐")
+st.title("🏖️  – Công Cụ Chia 4 Đội Thể Thao Ngẫu Nhiên 🏐")
 st.write("Giao diện được thiết kế theo phong cách bãi biển năng động. Tải danh sách để hệ thống tự chia đội!")
 
 # ------------------- UPLOAD FILES -------------------
