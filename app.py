@@ -30,12 +30,14 @@ if st.button("🎲 Bắt đầu chia đội"):
         st.error("Vui lòng upload danh sách chính.")
     else:
         df_main = pd.read_excel(file_main)
-        main_list = df_main.iloc[:,0].dropna().tolist()
+        # Lấy cột thứ 2 (index 1) làm tên
+        main_list = df_main.iloc[:, 1].dropna().astype(str).tolist()
 
         seeds_list = []
         if file_seeds:
             df_seeds = pd.read_excel(file_seeds)
-            seeds_list = df_seeds.iloc[:,0].dropna().tolist()
+            # Lấy cột thứ 2 (index 1)
+            seeds_list = df_seeds.iloc[:, 1].dropna().astype(str).tolist()
 
         # Remove seeds from main list if duplicated
         main_list_clean = [p for p in main_list if p not in seeds_list]
