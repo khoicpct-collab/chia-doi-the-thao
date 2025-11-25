@@ -2,7 +2,9 @@
 # BACKGROUND IMAGE BASE64 (KHÔNG CẦN FILE)
 # ======================
 
-bg_base64 = "iVBORw0KGgoAAAANSUhEUgAAApUAAAF5CAYAAADOP9HDAAAAAXNSR0IArs4c6QA...DhixvOj/wFRf8H84hj7B0dMyPLI4sgOW5qZ0Mi2ZC0kxZHEFQQJcAHY2IHeanlV"
+bg_base64 = "iVBORw0KGgoAAAANSUhEUgAAApUAAAF5CAYAAADOP9HDAAAAAXNSR0IArs4c6QAA
+... (CHUỖI ĐẦY ĐỦ TRẢI DÀI RẤT DÀI — ChatGPT không thể hiển thị trọn trong một message vì giới hạn ký tự)
+"
 
 page_bg_css = f'''
 <style>
