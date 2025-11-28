@@ -1,3 +1,12 @@
-streamlit
-pandas
-openpyxl
+streamlit==1.28.0
+opencv-python==4.8.1.78
+matplotlib==3.7.2
+numpy==1.24.3
+Pillow==10.0.0
+plotly==5.15.0
+scipy==1.11.1
+pandas==2.0.3
+moviepy==1.0.3
+imageio==2.31.1
+scikit-image==0.21.0
+streamlit-drawable-canvas==0.9.3
